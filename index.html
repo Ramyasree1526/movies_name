@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Movies</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        [data-page]:not(.active-page) {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+    <nav class="bg-gray-800 p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-red-500" data-nav-target="home">Prime Movies</a>
+            <ul class="flex space-x-6">
+                <li><button class="text-white hover:text-red-400 transition-colors" data-nav-target="home">Home</button></li>
+                <li><button class="text-white hover:text-red-400 transition-colors" data-nav-target="movies">Movies</button></li>
+                <li><button class="text-white hover:text-red-400 transition-colors" data-nav-target="prime-info">About Prime</button></li>
+                <li><button class="text-white hover:text-red-400 transition-colors" data-nav-target="contact">Contact</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto mt-8 p-4">
+        <!-- Home Page -->
+        <section data-page="home" class="active-page text-center">
+            <h1 class="text-5xl font-extrabold mb-6 text-red-500">Welcome to Prime Movies!</h1>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Your premier destination for blockbuster movies, exclusive series, and timeless classics. Dive into a world of entertainment tailored just for you.</p>
+            <img src="https://images.pexels.com/photos/6177648/pexels-photo-6177648.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Film production equipment, symbolizing movie making" class="rounded-lg shadow-lg mx-auto max-w-full h-auto mb-12">
+
+            <div class="max-w-4xl mx-auto mb-12">
+                <h3 class="text-3xl font-bold mb-6 text-red-400">Uncover Endless Entertainment</h3>
+                <p class="text-lg mb-6">At Prime Movies, we believe in a cinematic experience for everyone. From thrilling action to heartwarming dramas, laugh-out-loud comedies to mind-bending sci-fi, our ever-growing library has something to captivate every viewer.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left mb-8">
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+                        <h4 class="text-2xl font-semibold mb-3 text-red-300">Exclusive Originals</h4>
+                        <p class="text-gray-300">Discover critically acclaimed series and movies available only on Prime. Be the first to watch groundbreaking stories.</p>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+                        <h4 class="text-2xl font-semibold mb-3 text-red-300">Curated Collections</h4>
+                        <p class="text-gray-300">Explore hand-picked collections, trending titles, and hidden gems. We make it easy to find your next favorite film.</p>
+                    </div>
+                </div>
+                <img src="https://images.pexels.com/photos/6943446/pexels-photo-6943446.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Person watching a screen, symbolizing a viewer's experience" class="rounded-lg shadow-lg mx-auto max-w-full h-auto mt-8 mb-8">
+                <p class="text-lg mb-8">Start your Prime Movies journey today and transform your living room into a premium movie theater. With intuitive navigation and stunning visuals, unparalleled entertainment is just a click away.</p>
+            </div>
+            <button class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-colors" data-nav-target="movies">Explore Movies</button>
+        </section>
+
+        <!-- Movies Page -->
+        <section data-page="movies">
+            <h2 class="text-4xl font-bold mb-8 text-center text-red-500">Our Latest Collection</h2>
+            <div id="movies-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+            <div id="movies-loading" class="text-center text-gray-400 text-xl mt-12">Loading movies...</div>
+            <div id="movies-error" class="text-center text-red-400 text-xl mt-12 hidden">Failed to load movies. Please try again later.</div>
+        </section>
+
+        <!-- About Prime Page -->
+        <section data-page="prime-info">
+            <h2 class="text-4xl font-bold mb-8 text-center text-red-500">About Prime</h2>
+            <div class="max-w-3xl mx-auto bg-gray-800 p-8 rounded-lg shadow-md">
+                <p class="text-lg mb-4">Prime Movies offers an unparalleled streaming experience. With a vast library of films and TV shows, including exclusive Originals, we bring entertainment right to your fingertips.</p>
+                <p class="text-lg mb-4">Enjoy ad-free viewing, download content to watch offline, and stream in stunning 4K UHD. Our curated selections ensure there's always something new and exciting for every taste and mood.</p>
+                <p class="text-lg">Join Prime Movies today and unlock a world of premium entertainment!</p>
+                <img src="https://images.pexels.com/photos/7857912/pexels-photo-7857912.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Movie projector light beam, symbolizing cinematic experience" class="rounded-lg shadow-lg mx-auto max-w-full h-auto mt-8">
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section data-page="contact">
+            <h2 class="text-4xl font-bold mb-8 text-center text-red-500">Contact Us</h2>
+            <form id="contact-form" class="max-w-md mx-auto bg-gray-800 p-8 rounded-lg shadow-md">
+                <div class="mb-6">
+                    <label for="name" class="block text-gray-300 text-sm font-bold mb-2">Name</label>
+                    <input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-900 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 border-gray-600" placeholder="Your Name" required>
+                </div>
+                <div class="mb-6">
+                    <label for="email" class="block text-gray-300 text-sm font-bold mb-2">Email</label>
+                    <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-900 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 border-gray-600" placeholder="you@example.com" required>
+                </div>
+                <div class="mb-6">
+                    <label for="message" class="block text-gray-300 text-sm font-bold mb-2">Message</label>
+                    <textarea id="message" name="message" rows="5" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-900 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 border-gray-600" placeholder="Your message..." required></textarea>
+                </div>
+                <div class="flex items-center justify-between">
+                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition-colors">
+                        Send Message
+                    </button>
+                </div>
+                <div id="contact-status" class="mt-4 text-center text-green-400 hidden"></div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 mt-12 p-6 text-center text-gray-400">
+        <p>&copy; 2023 Prime Movies. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
